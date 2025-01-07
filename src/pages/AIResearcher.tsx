@@ -1,6 +1,6 @@
 import React from 'react';
 import { Card } from '@/components/ui/card';
-import { Brain, Database } from 'lucide-react';
+import { Brain, Database, Code, GitBranch } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/components/ui/use-toast';
 import { useProject } from '@/contexts/ProjectContext';
