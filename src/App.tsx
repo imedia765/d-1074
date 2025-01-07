@@ -10,6 +10,7 @@ import CodeGenerator from "./pages/CodeGenerator";
 import AIResearcher from "./pages/AIResearcher";
 import Documentation from "./pages/Documentation";
 import Analytics from "./pages/Analytics";
+import Configuration from "./pages/Configuration";
 
 const queryClient = new QueryClient();
 
@@ -29,6 +30,7 @@ const App = () => (
                 <Route path="/researcher" element={<AIResearcher />} />
                 <Route path="/docs" element={<Documentation />} />
                 <Route path="/analytics" element={<Analytics />} />
+                <Route path="/configuration" element={<Configuration />} />
               </Routes>
             </main>
           </div>

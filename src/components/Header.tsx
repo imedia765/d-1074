@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Code, Brain, Home, BarChart } from 'lucide-react';
+import { Code, Brain, Home, BarChart, Settings } from 'lucide-react';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { useProject } from '@/contexts/ProjectContext';
 
@@ -68,6 +68,13 @@ const Header = () => {
           >
             <BarChart className="h-4 w-4" />
             <span>Analytics</span>
+          </Link>
+          <Link
+            to="/configuration"
+            className={`flex items-center space-x-2 transition-colors hover:text-foreground/80 px-3 py-2 rounded-md ${isActive('/configuration')}`}
+          >
+            <Settings className="h-4 w-4" />
+            <span>Configuration</span>
           </Link>
         </nav>
       </div>
