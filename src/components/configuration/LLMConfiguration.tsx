@@ -2,11 +2,13 @@ import React, { useEffect } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import { AlertCircle } from "lucide-react";
 import { useLLM } from '@/hooks/useLLM';
 import { LLMProviderSelect } from '@/components/LLMProviderSelect';
 
 export const LLMConfiguration = () => {
-  const { providers, selectedProvider, setSelectedProvider, loadProviders, isLoading } = useLLM();
+  const { providers, selectedProvider, setSelectedProvider, loadProviders, isLoading, error } = useLLM();
   const [apiKey, setApiKey] = React.useState('');
   const [baseUrl, setBaseUrl] = React.useState('');
 
@@ -26,6 +28,16 @@ export const LLMConfiguration = () => {
         <CardDescription>Configure your LLM providers and API settings</CardDescription>
       </CardHeader>
       <CardContent className="space-y-4">
+        {error && (
+          <Alert variant="destructive">
+            <AlertCircle className="h-4 w-4" />
+            <AlertTitle>Error</AlertTitle>
+            <AlertDescription>
+              {error}
+            </AlertDescription>
+          </Alert>
+        )}
+        
         <div className="space-y-2">
           <label className="text-sm font-medium">Provider</label>
           <LLMProviderSelect
@@ -33,6 +45,9 @@ export const LLMConfiguration = () => {
             selectedProvider={selectedProvider}
             onProviderChange={setSelectedProvider}
           />
+          {providers.length === 0 && !isLoading && (
+            <p className="text-sm text-muted-foreground">No providers available. Using mock data.</p>
+          )}
         </div>
         
         <div className="space-y-2">
